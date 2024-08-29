@@ -32,13 +32,13 @@ Feature: Pre login
            #   Then user complete the welcome onboarding of the app
 
 
- #Test Case for Login:---** 
+ #Test Case for Login:---** **
            # Scenario Outline: I want to login with my username and password so that I can visualize my home page
            #   Given the PreLogin is displayed
            #   When the user tap the button Acceder in Prelogin screen
            #   And user login with username "<username>" and "<password>"
-           #   Then the screen of Dashboard should displayed
+           #   Then the screen of Dashboard should displayed.
 
            #   Examples:
            #     | username    | password |
-           #     | jordyaponte | 321321   |
+           #     | jordyaponte | 321321   |  
