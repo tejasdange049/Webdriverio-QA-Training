@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[contains(@text,'Al aceptar, consientes nuestras\nPolíticas de Privacidad y los Términos y Condiciones de Uso.')]"
+}

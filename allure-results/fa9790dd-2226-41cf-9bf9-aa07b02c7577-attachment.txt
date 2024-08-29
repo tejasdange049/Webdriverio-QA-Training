@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[contains(@text,'App Popular requiere colectar, almacenar, enviar y procesar:\n\nNúmero de teléfono: \nLa aplicación utiliza el número de teléfono para mantener los controles de seguridad, crear la sesión del cliente y prevenir fraudes.\n')]"
+}
