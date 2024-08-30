@@ -64,5 +64,20 @@ Then(/^user login with username "([^"]*)" and "([^"]*)"$/, async(username:string
         await PreLoginPage.validateIfTokenIsUp('321321');
  
 });
+
+ 
+Then(/^verify Dashboard$/, async() => {
+    await PreLoginPage.logocheck();
+});
+
+
+Then(/^click the menubar$/, async() => {
+    await PreLoginPage.menutuch();
+});
+
+
+Then(/^verify menubar acccess$/, async() => {
+     await PreLoginPage.menubaracce();
+});
  
 

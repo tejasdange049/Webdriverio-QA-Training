@@ -8,7 +8,10 @@ Feature: Pre login
     And the user tap the button Acceder in Prelogin screen
     And use are on actual login page
     And verify the user id box and password box
-    Then user login with username "<username>" and "<password>"
+    And user login with username "<username>" and "<password>"
+    And verify Dashboard  
+    And click the menubar
+    Then verify menubar acccess
 
     Examples:
       | username    | password |
@@ -41,4 +44,9 @@ Feature: Pre login
 
            #   Examples:
            #     | username    | password |
-           #     | jordyaponte | 321321   |  
+           #     | jordyaponte | 321321   |   
+
+ #Test Case for Dash Bord:---****
+           #  verify Dashboard
+           #  verify login button
+           #  verify menu button 

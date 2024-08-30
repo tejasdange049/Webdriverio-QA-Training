@@ -36,7 +36,12 @@ class PreLoginPage extends Page {
     get ValidarTokenPopularBtn() { return $('//android.widget.TextView[@text="Validar Token Popular"]') }
 
     get Validdeskokbtn(){return $('//android.widget.TextView[@text = "De acuerdo" or . = "De acuerdo")]')}
-
+    get dashbordlogo(){ return $('//android.widget.TextView[contains(@text,"Hola")]/preceding-sibling::android.view.View[1]')}
+    get menuopen(){ return $("//*[@class = 'android.view.View' and (@text = '' or . = '')]")}
+    get lrbtn(){return $('//android.widget.TextView[@text = "Ir al inicio" or . = "Ir al inicio"]')}
+    get menubaracc(){ return $('android.widget.TextView[@text = "¿Qué deseas hacer?" or . = "¿Qué deseas hacer?")]')}
+    
+    
     async validate() {
     }
    
@@ -134,6 +139,26 @@ class PreLoginPage extends Page {
     //     await (await this.Validdeskokbtn).isDisplayed()
     //     await (await this.Validdeskokbtn).click();
     // }
+
+
+    async delay(ms: number) {
+        const seconds = ms * 1000;
+        return new Promise(resolve => setTimeout(resolve, seconds));
+    }
+
+    async logocheck(){
+       await expect(this.dashbordlogo).toBeDisplayed();
+     }
+    
+   async menutuch(){
+    await expect(this.menuopen).toBeDisplayed();
+    await this.delay(3);
+    await (await this.menuopen).click();
+     }
+
+  async menubaracce(){
+    await (await this.menubaracc).isDisplayed();
+  }
 
 }
 export default new PreLoginPage();
