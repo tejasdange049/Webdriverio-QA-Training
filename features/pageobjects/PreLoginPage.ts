@@ -21,7 +21,7 @@ class PreLoginPage extends Page {
     get parragraphThridScreenCarousel() { return $('//android.widget.TextView[@text="Para que tengas el control de tus finanzas \ndesde la palma de tus manos."]') }
     get thirdScreenCarouselTitle() { return $('//android.widget.TextView[@text="Encontrarás nuevas \nfuncionalidades."]') }
     get btnCerrar() { return $('//android.widget.TextView[@text = "Cerrar"]') }
-    get burgerMenuPreLoginBtn() { return $('//android.widget.TextView[@text="¿Aún no te has registrado?"]/..//following-sibling::android.view.View[1]') }
+   // get burgerMenuPreLoginBtn() { return $('//android.widget.TextView[@text="¿Aún no te has registrado?"]/..//following-sibling::android.view.View[1]') }
     get btnMasTransacciones() { return $('//android.widget.TextView[@text="Más\nTransacciones"]/..') }
     get preLoginTokenPopularBtn() { return $('//android.widget.TextView[@text="Token \n Popular"]/..') }
     get btnAunNoTeHasRegistrado() { return $('//android.widget.TextView[@text="¿Aún no te has registrado?"]') }
@@ -40,8 +40,18 @@ class PreLoginPage extends Page {
     get menuopen(){ return $("//*[@class = 'android.view.View' and (@text = '' or . = '')]")}
     get lrbtn(){return $('//android.widget.TextView[@text = "Ir al inicio" or . = "Ir al inicio"]')}
     get menubaracc(){ return $('android.widget.TextView[@text = "¿Qué deseas hacer?" or . = "¿Qué deseas hacer?")]')}
-    
-    
+    get upp(){return $('//android.widget.TextView[@text = "UP" or . = "UP"]')}
+    get upbtn(){return $("//*[@class = 'android.view.View' and (@text = '' or . = '')]")}
+    get transferirBtn(){return $('//android.widget.TextView[@text ="Transferir"]')}
+
+
+    get burgerMenuPreLoginBtn() { return $('//android.widget.TextView[@text="¿Aún no te has registrado?"]/..//following-sibling::android.view.View[1]') }
+    get bmQueDeseasHacerTxt() { return $('//android.widget.TextView[@text = "¿Qué deseas hacer?"]') }
+    get transtext(){return $('//android.widget.TextView[@text = "¿A dónde deseas transferir?" or . = "¿A dónde deseas transferir?")]')}
+    get snackBarTransferir() { return $('//android.view.View[@content-desc="Transferir"]') }
+    get aDondeDeseasTransferir() { return $('//android.widget.TextView[@text="¿A dónde deseas transferir?"]') }
+
+
     async validate() {
     }
    
@@ -135,30 +145,34 @@ class PreLoginPage extends Page {
 
         await (await this.accederLoginBtn).click();
     }
-    // async okbtn(){
-    //     await (await this.Validdeskokbtn).isDisplayed()
-    //     await (await this.Validdeskokbtn).click();
-    // }
-
-
-    async delay(ms: number) {
-        const seconds = ms * 1000;
-        return new Promise(resolve => setTimeout(resolve, seconds));
-    }
+    
 
     async logocheck(){
-       await expect(this.dashbordlogo).toBeDisplayed();
+        
+     await expect(await this.transferirBtn).toBeDisplayed();
+     await(await this.transferirBtn).click();
+    await expect(await this.aDondeDeseasTransferir).toBeDisplayed();
+  
      }
     
-   async menutuch(){
-    await expect(this.menuopen).toBeDisplayed();
-    await this.delay(3);
-    await (await this.menuopen).click();
-     }
+//    async menutuch(){
+//     await expect(await this.menuopen).toBeDisplayed();
+//      await (await this.menuopen).click();
+//      }
 
-  async menubaracce(){
-    await (await this.menubaracc).isDisplayed();
-  }
+//   async menubaracce(){
+//     await (await this.menubaracc).isDisplayed();
+ 
+//   }
+
+// async preloginmenuoption(){
+//     await expect(await this.burgerMenuPreLoginBtn).toBeDisplayed();
+//     await(await this.burgerMenuPreLoginBtn).click();
+
+//     await expect(await this.bmQueDeseasHacerTxt).toBeDisplayed();
+
+// }
+
 
 }
 export default new PreLoginPage();

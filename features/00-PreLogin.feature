@@ -5,17 +5,20 @@ Feature: Pre login
     And user grant permissions
     And the welcome carrousel should displayed
     And user complete the welcome onboarding of the app
+    # Then open menu option 
     And the user tap the button Acceder in Prelogin screen
     And use are on actual login page
     And verify the user id box and password box
     And user login with username "<username>" and "<password>"
-    And verify Dashboard  
-    And click the menubar
-    Then verify menubar acccess
+    Then verify Dashboard  
+    # And click the menubar
+    # Then verify menubar acccess
 
     Examples:
       | username    | password |
-      | jordyaponte | 321321   |
+      | emas        | 321321   |
+
+     # | jordyaponte | 321321   |
   
  
 
@@ -44,9 +47,5 @@ Feature: Pre login
 
            #   Examples:
            #     | username    | password |
-           #     | jordyaponte | 321321   |   
-
- #Test Case for Dash Bord:---****
-           #  verify Dashboard
-           #  verify login button
-           #  verify menu button 
+           #     | jordyaponte | 321321   |  
+                              

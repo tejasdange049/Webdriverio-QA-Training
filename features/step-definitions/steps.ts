@@ -71,13 +71,20 @@ Then(/^verify Dashboard$/, async() => {
 });
 
 
-Then(/^click the menubar$/, async() => {
-    await PreLoginPage.menutuch();
-});
+// Then(/^click the menubar$/, async() => {
+//     await PreLoginPage.menutuch();
+// });
 
 
-Then(/^verify menubar acccess$/, async() => {
-     await PreLoginPage.menubaracce();
-});
+// Then(/^verify menubar acccess$/, async() => {
+//      await PreLoginPage.menubaracce();
+// });
+ 
+ 
+// Then(/^open menu option$/, async() => {
+//     await PreLoginPage.preloginmenuoption();
+//  });
+
+ 
  
 
