@@ -37,19 +37,21 @@ class PreLoginPage extends Page {
 
     get Validdeskokbtn(){return $('//android.widget.TextView[@text = "De acuerdo" or . = "De acuerdo")]')}
     get dashbordlogo(){ return $('//android.widget.TextView[contains(@text,"Hola")]/preceding-sibling::android.view.View[1]')}
-    get menuopen(){ return $("//*[@class = 'android.view.View' and (@text = '' or . = '')]")}
     get lrbtn(){return $('//android.widget.TextView[@text = "Ir al inicio" or . = "Ir al inicio"]')}
     get menubaracc(){ return $('android.widget.TextView[@text = "¿Qué deseas hacer?" or . = "¿Qué deseas hacer?")]')}
     get upp(){return $('//android.widget.TextView[@text = "UP" or . = "UP"]')}
-    get upbtn(){return $("//*[@class = 'android.view.View' and (@text = '' or . = '')]")}
-    get transferirBtn(){return $('//android.widget.TextView[@text ="Transferir"]')}
-
+  
 
     get burgerMenuPreLoginBtn() { return $('//android.widget.TextView[@text="¿Aún no te has registrado?"]/..//following-sibling::android.view.View[1]') }
     get bmQueDeseasHacerTxt() { return $('//android.widget.TextView[@text = "¿Qué deseas hacer?"]') }
     get transtext(){return $('//android.widget.TextView[@text = "¿A dónde deseas transferir?" or . = "¿A dónde deseas transferir?")]')}
     get snackBarTransferir() { return $('//android.view.View[@content-desc="Transferir"]') }
     get aDondeDeseasTransferir() { return $('//android.widget.TextView[@text="¿A dónde deseas transferir?"]') }
+    get filterCuentas() { return $('//android.widget.TextView[@text = "Cuentas"]') }
+    get menu(){return $('//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/androidx.compose.ui.platform.ComposeView[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]')}
+    get menuoptionss(){ return $('//android.widget.TextView[@text = "¿Qué deseas hacer?" or . = "¿Qué deseas hacer?"]')}
+    get facilidadess(){ return $('//android.widget.TextView[@text = "Facilidades de pagos" or . = "Facilidades de pagos"]')}
+    get facilidadessdisponibles(){ return $('//android.widget.TextView[@text = "Facilidades disponibles" or . = "Facilidades disponibles"]')}
 
 
     async validate() {
@@ -145,20 +147,40 @@ class PreLoginPage extends Page {
 
         await (await this.accederLoginBtn).click();
     }
-    
+    async delay(ms: number) {
+        const seconds = ms * 1000;
+        return new Promise(resolve => setTimeout(resolve, seconds));
+    }
 
     async logocheck(){
-        
-     await expect(await this.transferirBtn).toBeDisplayed();
-     await(await this.transferirBtn).click();
-    await expect(await this.aDondeDeseasTransferir).toBeDisplayed();
+        await expect(await this.dashbordlogo).toBeDisplayed();
+       // await $('android=new UiScrollable(new UiSelector()).setAsHorizontalList().scrollForward(2)');
+        await expect(await this.filterCuentas).toBeDisplayed();
+        await(await this.filterCuentas).click();
+        await this.delay(1);
   
      }
+
+
+     async menuopentry(){
+        await expect(await this.menu).toBeDisplayed();
+        await(await this.menu).click();
+        await this.delay(1);
+        await expect(await this.menuoptionss).toBeDisplayed();
+        await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(1, 5)');
+        await expect(await this.facilidadess).toBeDisplayed();
+        await (await this.facilidadess).click();
+        await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(1, 5)');
+        await expect(await this.facilidadessdisponibles).toBeDisplayed();
+        await(await this.facilidadessdisponibles).click();
+        await this.delay(15);
+     }
     
-//    async menutuch(){
-//     await expect(await this.menuopen).toBeDisplayed();
-//      await (await this.menuopen).click();
-//      }
+//    async userprofile(){
+//     await expect(await this.upp).toBeDisplayed();
+//     await (await this.upp).click();
+//     await this.delay(1);
+//     }
 
 //   async menubaracce(){
 //     await (await this.menubaracc).isDisplayed();

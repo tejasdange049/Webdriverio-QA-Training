@@ -16,9 +16,8 @@ Feature: Pre login
 
     Examples:
       | username    | password |
-      | emas        | 321321   |
-
-     # | jordyaponte | 321321   |
+      #| emas        | 321321   |
+      | jordyaponte | 321321   |
   
  
 

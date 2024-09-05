@@ -68,6 +68,9 @@ Then(/^user login with username "([^"]*)" and "([^"]*)"$/, async(username:string
  
 Then(/^verify Dashboard$/, async() => {
     await PreLoginPage.logocheck();
+    //await PreLoginPage.userprofile();
+    await PreLoginPage.menuopentry();
+
 });
 
 
