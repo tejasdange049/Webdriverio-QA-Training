@@ -52,8 +52,23 @@ class PreLoginPage extends Page {
     get menuoptionss(){ return $('//android.widget.TextView[@text = "¿Qué deseas hacer?" or . = "¿Qué deseas hacer?"]')}
     get facilidadess(){ return $('//android.widget.TextView[@text = "Facilidades de pagos" or . = "Facilidades de pagos"]')}
     get facilidadessdisponibles(){ return $('//android.widget.TextView[@text = "Facilidades disponibles" or . = "Facilidades disponibles"]')}
-
-
+    get Solicitarmenu(){return $('//android.widget.TextView[@text = "Solicitar productos" or . = "Solicitar productos"]')}
+    get backbtnn(){ return $('//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.ImageView[2]')}
+    get menuback(){return $('//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.ImageView[1]')}
+    get Transferirr(){return $('//android.widget.TextView[@text = "Transferir" or . = "Transferir"]')}
+    get Terceross(){return $('//android.widget.TextView[@text = "Terceros" or . = "Terceros"]')}
+    get Seleccionaa(){return $('//android.widget.TextView[@text = "Selecciona tu cuenta" or . = "Selecciona tu cuenta"]')}
+    get AhorroUSD(){return $('//android.widget.TextView[@text = "Ahorro Usd" or . = "Ahorro Usd"]')}
+    get Seleccionaunbeneficiario(){return $('//android.widget.TextView[@text = "Selecciona un beneficiario" or . = "Selecciona un beneficiario"]')}
+    get AAvelinoDontDelete(){return $('//android.widget.TextView[@text = "AAvelinoDontDelete" or . = "AAvelinoDontDelete"]')}
+    //get Enteramount(){return $('//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/androidx.compose.ui.platform.ComposeView[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]')}
+    get Enteramount() { return $('//android.widget.EditText[@text="RD$"]') }
+    get btnContinuar() { return $('//android.widget.TextView[@text="Continuar"]') }
+    // back btn
+    get tbacktbn(){return $('//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/androidx.compose.ui.platform.ComposeView[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]')}
+    
+    
+    
     async validate() {
     }
    
@@ -154,6 +169,7 @@ class PreLoginPage extends Page {
 
     async logocheck(){
         await expect(await this.dashbordlogo).toBeDisplayed();
+        
        // await $('android=new UiScrollable(new UiSelector()).setAsHorizontalList().scrollForward(2)');
         await expect(await this.filterCuentas).toBeDisplayed();
         await(await this.filterCuentas).click();
@@ -168,14 +184,74 @@ class PreLoginPage extends Page {
         await this.delay(1);
         await expect(await this.menuoptionss).toBeDisplayed();
         await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(1, 5)');
+
+        // some timehide the buttion by admin 
+
         await expect(await this.facilidadess).toBeDisplayed();
         await (await this.facilidadess).click();
         await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(1, 5)');
         await expect(await this.facilidadessdisponibles).toBeDisplayed();
         await(await this.facilidadessdisponibles).click();
-        await this.delay(15);
+
+       
+        await expect(await this.backbtnn).toBeDisplayed();
+        await(await this.backbtnn).click();
+        await this.delay(1);
      }
     
+
+     async Task(amountTransfer: string){
+        await expect(await this.menu).toBeDisplayed();
+        await(await this.menu).click();
+        // await expect(await this.Solicitarmenu).toBeDisplayed();
+        // await(await this.Solicitarmenu).click();
+        // await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(1, 5)');
+        
+        // Task for Transtion 
+        await expect(await this.Transferirr).toBeDisplayed();
+        await(await this.Transferirr).click();
+        await this.delay(2);
+
+        await expect(await this.Terceross).toBeDisplayed();
+        await(await this.Terceross).click();await this.delay(1);
+
+        await expect(await this.Seleccionaa).toBeDisplayed();
+        await(await this.Seleccionaa).click();await this.delay(1);
+
+        await expect(await this.AhorroUSD).toBeDisplayed();
+        await(await this.AhorroUSD).click();await this.delay(1);
+
+        
+        await expect(await this.Seleccionaunbeneficiario).toBeDisplayed();
+        await(await this.Seleccionaunbeneficiario).click();await this.delay(3);
+
+        await expect(await this.AAvelinoDontDelete).toBeDisplayed();
+        await(await this.AAvelinoDontDelete).click();await this.delay(1);
+
+        await expect(await this.Enteramount).toBeDisplayed();
+        await(await this.Enteramount).setValue(amountTransfer);
+        await this.delay(2);
+     }
+     async selectBtnContinuar() {
+        (await this.btnContinuar).click();
+        await this.delay(3);
+        await(await this.tbacktbn).click();        
+        await this.delay(3);
+
+    }
+     
+
+
+
+
+
+     
+       
+    
+
+
+
+
 //    async userprofile(){
 //     await expect(await this.upp).toBeDisplayed();
 //     await (await this.upp).click();

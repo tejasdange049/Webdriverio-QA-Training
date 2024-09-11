@@ -68,11 +68,16 @@ Then(/^user login with username "([^"]*)" and "([^"]*)"$/, async(username:string
  
 Then(/^verify Dashboard$/, async() => {
     await PreLoginPage.logocheck();
-    //await PreLoginPage.userprofile();
+    //await PreLoginPage.userprofile(); 
     await PreLoginPage.menuopentry();
 
 });
 
+Then(/^Enter currency "([^"]*)"$/, async (amountTransfer: string)=> {
+    await PreLoginPage.Task(amountTransfer);
+    await PreLoginPage.selectBtnContinuar();
+
+});
 
 // Then(/^click the menubar$/, async() => {
 //     await PreLoginPage.menutuch();
